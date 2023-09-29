@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\" />
+    <ProjectReference Include="..\ModernFrequency.Data.Models\ModernFrequency.Data.Models.csproj" />
   </ItemGroup>
 
 </Project>

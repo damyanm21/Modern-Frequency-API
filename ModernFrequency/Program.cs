@@ -1,8 +1,5 @@
-using Microsoft.Extensions.Configuration;
 using ModernFrequency.Data;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
