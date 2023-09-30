@@ -1,4 +1,6 @@
-﻿namespace ModernFrequency.Business.Models.DTOs
+﻿using ModernFrequency.Business.Models.DTOs.Album;
+
+namespace ModernFrequency.Business.Models.DTOs.Track
 {
     public class TrackDTO
     {

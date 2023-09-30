@@ -7,6 +7,8 @@ public class ArtistConfiguration : IEntityTypeConfiguration<Artist>
     public void Configure(EntityTypeBuilder<Artist> builder)
     {
         builder.HasKey(artist => artist.ArtistId);
+        builder.Property(artist => artist.ArtistId)
+           .ValueGeneratedOnAdd();
 
         builder.Property(artist => artist.Name)
             .IsRequired()
