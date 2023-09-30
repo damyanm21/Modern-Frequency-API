@@ -6,4 +6,18 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ModernFrequency.Business.Models\ModernFrequency.Business.Models.csproj" />
+    <ProjectReference Include="..\ModernFrequency.Data.Models\ModernFrequency.Data.Models.csproj" />
+  </ItemGroup>
+
 </Project>
