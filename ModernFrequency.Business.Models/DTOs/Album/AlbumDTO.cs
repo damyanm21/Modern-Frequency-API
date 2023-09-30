@@ -1,4 +1,7 @@
-﻿namespace ModernFrequency.Business.Models.DTOs
+﻿using ModernFrequency.Business.Models.DTOs.AlbumArtist;
+using ModernFrequency.Business.Models.DTOs.Track;
+
+namespace ModernFrequency.Business.Models.DTOs.Album
 {
     public class AlbumDTO
     {

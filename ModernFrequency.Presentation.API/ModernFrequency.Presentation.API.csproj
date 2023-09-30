@@ -18,10 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ModernFrequency.Business\ModernFrequency.Business.csproj" />
     <ProjectReference Include="..\ModernFrequency.Data\ModernFrequency.Data.csproj" />
   </ItemGroup>

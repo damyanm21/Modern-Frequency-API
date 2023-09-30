@@ -4,6 +4,8 @@ using ModernFrequency.Data.Abstraction.Repositories;
 using ModernFrequency.Data.Repositories;
 using ModernFrequency.Business.AutoMapper;
 using AutoMapper;
+using ModernFrequency.Business.Abstraction.Services;
+using ModernFrequency.Business.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,7 @@ builder.Services.AddScoped<IArtistRepository, ArtistRepository>();
 builder.Services.AddScoped<IAlbumRepository, AlbumRepository>();
 builder.Services.AddScoped<IAlbumArtistRepository, AlbumArtistRepository>();
 builder.Services.AddScoped<ITrackRepository, TrackRepository>();
+builder.Services.AddScoped<IArtistService, ArtistService>();
 builder.Services.AddAutoMapper(typeof(ModernFrequencyMappingProifle));
 
 builder.Services.AddControllers();

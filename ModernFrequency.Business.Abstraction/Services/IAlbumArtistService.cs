@@ -1,4 +1,4 @@
-﻿using ModernFrequency.Business.Models.DTOs;
+﻿using ModernFrequency.Business.Models.DTOs.AlbumArtist;
 
 namespace ModernFrequency.Business.Abstraction.Services
 {
