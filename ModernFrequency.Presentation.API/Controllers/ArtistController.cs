@@ -51,7 +51,7 @@ namespace ModernFrequency.Presentation.API.Controllers
         public async Task<ResponseModel> UpdateArtist(ArtistDTO artist)
         {
             await _artistService.UpdateArtistAsync(artist);
-            var result = HttpResponseHelper.Success(HttpStatusCode.Created, artist);
+            var result = HttpResponseHelper.Success(HttpStatusCode.OK, artist);
 
             return result;
         }
