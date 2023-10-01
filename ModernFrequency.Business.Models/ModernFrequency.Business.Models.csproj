@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ModernFrequency.Data.Models\ModernFrequency.Data.Models.csproj" />
+  </ItemGroup>
+
 </Project>

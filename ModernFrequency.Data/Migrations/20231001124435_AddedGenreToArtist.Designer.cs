@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ModernFrequency.Data;
 
@@ -10,9 +11,11 @@ using ModernFrequency.Data;
 namespace ModernFrequency.Data.Migrations
 {
     [DbContext(typeof(ModernFrequencyDbContext))]
-    partial class ModernFrequencyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231001124435_AddedGenreToArtist")]
+    partial class AddedGenreToArtist
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,7 +45,7 @@ namespace ModernFrequency.Data.Migrations
 
                     b.HasKey("AlbumId");
 
-                    b.ToTable("Albums", (string)null);
+                    b.ToTable("Albums");
                 });
 
             modelBuilder.Entity("ModernFrequency.Data.Models.Models.AlbumArtist", b =>
@@ -57,7 +60,7 @@ namespace ModernFrequency.Data.Migrations
 
                     b.HasIndex("ArtistId");
 
-                    b.ToTable("AlbumArtists", (string)null);
+                    b.ToTable("AlbumArtists");
                 });
 
             modelBuilder.Entity("ModernFrequency.Data.Models.Models.Artist", b =>
@@ -79,7 +82,7 @@ namespace ModernFrequency.Data.Migrations
 
                     b.HasKey("ArtistId");
 
-                    b.ToTable("Artists", (string)null);
+                    b.ToTable("Artists");
                 });
 
             modelBuilder.Entity("ModernFrequency.Data.Models.Models.Track", b =>
@@ -105,7 +108,7 @@ namespace ModernFrequency.Data.Migrations
 
                     b.HasIndex("AlbumId");
 
-                    b.ToTable("Tracks", (string)null);
+                    b.ToTable("Tracks");
                 });
 
             modelBuilder.Entity("ModernFrequency.Data.Models.Models.AlbumArtist", b =>

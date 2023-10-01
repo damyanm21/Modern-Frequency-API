@@ -11,26 +11,26 @@ namespace ModernFrequency.Business.Abstraction.Services
         /// Gets all artists asynchronously.
         /// </summary>
         /// <returns>An enumerable collection of artist DTOs.</returns>
-        Task<IEnumerable<ArtistDTO>> GetAllArtistsAsync();
+        Task<IEnumerable<ArtistGetDTO>> GetAllArtistsAsync();
 
         /// <summary>
         /// Gets an artist by their ID asynchronously.
         /// </summary>
         /// <param name="id">The unique ID of the artist.</param>
         /// <returns>The artist DTO if found; otherwise, null.</returns>
-        Task<ArtistDTO> GetArtistByIdAsync(int id);
+        Task<ArtistGetDTO> GetArtistByIdAsync(int id);
 
         /// <summary>
         /// Creates a new artist asynchronously.
         /// </summary>
         /// <param name="artist">The artist DTO to create.</param>
-        Task CreateArtistAsync(ArtistDTO artist);
+        Task CreateArtistAsync(ArtistPostDTO artist);
 
         /// <summary>
         /// Updates an existing artist asynchronously.
         /// </summary>
         /// <param name="artist">The artist DTO to update.</param>
-        Task UpdateArtistAsync(ArtistDTO artist);
+        Task UpdateArtistAsync(ArtistUpdateDTO artist);
 
         /// <summary>
         /// Deletes an artist by their ID asynchronously.
