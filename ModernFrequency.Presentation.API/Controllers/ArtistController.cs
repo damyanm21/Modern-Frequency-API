@@ -38,7 +38,7 @@ namespace ModernFrequency.Presentation.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ResponseModel> CreateArtist([FromBody] ArtistDTO artist)
+        public async Task<ResponseModel> CreateArtist([FromBody] ArtistPostDTO artist)
         {
             await _artistService.CreateArtistAsync(artist);
             var result = HttpResponseHelper.Success(HttpStatusCode.Created, artist);
@@ -48,7 +48,7 @@ namespace ModernFrequency.Presentation.API.Controllers
 
 
         [HttpPut("{id}")]
-        public async Task<ResponseModel> UpdateArtist(ArtistDTO artist)
+        public async Task<ResponseModel> UpdateArtist(ArtistUpdateDTO artist)
         {
             await _artistService.UpdateArtistAsync(artist);
             var result = HttpResponseHelper.Success(HttpStatusCode.OK, artist);

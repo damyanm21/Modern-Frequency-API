@@ -9,6 +9,6 @@ namespace ModernFrequency.Business.Models.DTOs.AlbumArtist
         public AlbumDTO Album { get; set; }
 
         public int ArtistId { get; set; }
-        public ArtistDTO Artist { get; set; }
+        public ArtistPostDTO Artist { get; set; }
     }
 }

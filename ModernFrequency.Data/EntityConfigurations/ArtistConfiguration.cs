@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ModernFrequency.Data.Models.Models;
+using System.ComponentModel.DataAnnotations;
 
 public class ArtistConfiguration : IEntityTypeConfiguration<Artist>
 {
@@ -13,5 +14,10 @@ public class ArtistConfiguration : IEntityTypeConfiguration<Artist>
         builder.Property(artist => artist.Name)
             .IsRequired()
             .HasMaxLength(100);
+
+        builder.Property(artist => artist.Genre)
+            .IsRequired()
+            .HasMaxLength(11)
+            .HasConversion<int>();
     }
 }

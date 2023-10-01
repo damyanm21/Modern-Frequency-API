@@ -11,7 +11,9 @@ namespace ModernFrequency.Business.AutoMapper
     {
         public ModernFrequencyMappingProifle()
         {
-            CreateMap<Artist, ArtistDTO>().ReverseMap();
+            CreateMap<Artist, ArtistGetDTO>().ReverseMap();
+            CreateMap<Artist, ArtistPostDTO>().ReverseMap();
+            CreateMap<Artist, ArtistUpdateDTO>().ReverseMap();
             CreateMap<Album, AlbumDTO>().ReverseMap();
             CreateMap<AlbumArtist, AlbumArtistDTO>().ReverseMap();
             CreateMap<Track, TrackDTO>().ReverseMap();

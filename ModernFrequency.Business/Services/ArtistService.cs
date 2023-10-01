@@ -17,26 +17,26 @@ namespace ModernFrequency.Business.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<ArtistDTO>> GetAllArtistsAsync()
+        public async Task<IEnumerable<ArtistGetDTO>> GetAllArtistsAsync()
         {
             var artists = await _artistRepository.All();
-            return _mapper.Map<IEnumerable<ArtistDTO>>(artists);
+            return _mapper.Map<IEnumerable<ArtistGetDTO>>(artists);
         }
 
-        public async Task<ArtistDTO> GetArtistByIdAsync(int id)
+        public async Task<ArtistGetDTO> GetArtistByIdAsync(int id)
         {
             var artist = await _artistRepository.GetByIdAsync(id);
-            return _mapper.Map<ArtistDTO>(artist);
+            return _mapper.Map<ArtistGetDTO>(artist);
         }
 
-        public async Task CreateArtistAsync(ArtistDTO artistDto)
+        public async Task CreateArtistAsync(ArtistPostDTO artistDto)
         {
             var artist = _mapper.Map<Artist>(artistDto);
             await _artistRepository.AddAsync(artist);
             await _artistRepository.SaveChangesAsync(); 
         }
 
-        public async Task UpdateArtistAsync(ArtistDTO artist)
+        public async Task UpdateArtistAsync(ArtistUpdateDTO artist)
         {
             var artistEntity = _mapper.Map<Artist>(artist);
             _artistRepository.Update(artistEntity);
