@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ModernFrequency.Data.Models.Models.Enums;
 
 namespace ModernFrequency.Data.Models.Models
 {
