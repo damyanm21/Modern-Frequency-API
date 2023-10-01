@@ -6,6 +6,7 @@ using ModernFrequency.Business.AutoMapper;
 using AutoMapper;
 using ModernFrequency.Business.Abstraction.Services;
 using ModernFrequency.Business.Services;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,7 +23,13 @@ builder.Services.AddScoped<ITrackRepository, TrackRepository>();
 builder.Services.AddScoped<IArtistService, ArtistService>();
 builder.Services.AddAutoMapper(typeof(ModernFrequencyMappingProifle));
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    });
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
