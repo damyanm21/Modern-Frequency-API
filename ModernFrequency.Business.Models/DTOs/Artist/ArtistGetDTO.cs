@@ -1,5 +1,5 @@
 ﻿using ModernFrequency.Business.Models.DTOs.AlbumArtist;
-using ModernFrequency.Data.Models.Models;
+using ModernFrequency.Data.Models.Models.Enums;
 
 namespace ModernFrequency.Business.Models.DTOs.Artist
 {
