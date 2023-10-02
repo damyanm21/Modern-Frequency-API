@@ -29,26 +29,25 @@ namespace ModernFrequency.Presentation.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ResponseModel> GetArtistById(int id)
+        public async Task<IActionResult> GetArtistById(int id)
         {
             var artist = await _artistService.GetArtistByIdAsync(id);
-            var result = HttpResponseHelper.Success(HttpStatusCode.OK, artist);
 
-            return result;
+            return StatusCode(artist.HttpStatusCode, artist);
         }
 
         [HttpPost]
-        public async Task<ResponseModel> CreateArtist([FromBody] ArtistPostDTO artist)
+        public async Task<IActionResult> CreateArtist([FromBody] ArtistPostDTO artist)
         {
             await _artistService.CreateArtistAsync(artist);
             var result = HttpResponseHelper.Success(HttpStatusCode.Created, artist);
 
-            return result;
+            return StatusCode(result.HttpStatusCode, result);
         }
 
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<ResponseModel>> UpdateArtist(ArtistUpdateDTO artist)
+        public async Task<IActionResult> UpdateArtist(ArtistUpdateDTO artist)
         {
             var result = await _artistService.UpdateArtistAsync(artist);
 
@@ -56,7 +55,7 @@ namespace ModernFrequency.Presentation.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<ResponseModel>> DeleteArtist(int id)
+        public async Task<IActionResult> DeleteArtist(int id)
         {
             var result = await _artistService.DeleteArtistAsync(id);
 

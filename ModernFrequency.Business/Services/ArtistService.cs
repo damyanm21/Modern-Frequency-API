@@ -26,29 +26,38 @@ namespace ModernFrequency.Business.Services
             return _mapper.Map<IEnumerable<ArtistGetDTO>>(artists);
         }
 
-        public async Task<ArtistGetDTO> GetArtistByIdAsync(int id)
+        public async Task<ResponseModel> GetArtistByIdAsync(int id)
         {
             var artist = await _artistRepository.GetByIdAsync(id);
-            return _mapper.Map<ArtistGetDTO>(artist);
-        }
+            var artistDTO = _mapper.Map<ArtistGetDTO>(artist);
 
-        public async Task CreateArtistAsync(ArtistPostDTO artistDto)
-        {
-            var artist = _mapper.Map<Artist>(artistDto);
-            await _artistRepository.AddAsync(artist);
-            await _artistRepository.SaveChangesAsync(); 
-        }
-
-        public async Task<ResponseModel> UpdateArtistAsync(ArtistUpdateDTO artist)
-        {
-            var artistEntity = await _artistRepository.GetByIdAsync(artist.ArtistId);
-            
-            if (artistEntity == null) 
+            if (id == null)
             {
                 return HttpResponseHelper.Error(HttpStatusCode.NotFound, IdNotFound);
             }
 
-            _artistRepository.Update(artistEntity);
+            return HttpResponseHelper.Success(HttpStatusCode.OK, artistDTO);
+        }
+
+        public async Task<ResponseModel> CreateArtistAsync(ArtistPostDTO artistDto)
+        {
+            var artist = _mapper.Map<Artist>(artistDto);
+            await _artistRepository.AddAsync(artist);
+            await _artistRepository.SaveChangesAsync(); 
+
+            return HttpResponseHelper.Success(HttpStatusCode.OK);
+        }
+
+        public async Task<ResponseModel> UpdateArtistAsync(ArtistUpdateDTO artist)
+        {
+            var artistDTO = await _artistRepository.GetByIdAsync(artist.ArtistId);
+            
+            if (artistDTO == null) 
+            {
+                return HttpResponseHelper.Error(HttpStatusCode.NotFound, IdNotFound);
+            }
+
+            _artistRepository.Update(artistDTO);
             await _artistRepository.SaveChangesAsync();
 
             return HttpResponseHelper.Success(HttpStatusCode.OK, artist);

@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ModernFrequency.Data.Models.Models;
-using System.ComponentModel.DataAnnotations;
 
 public class ArtistConfiguration : IEntityTypeConfiguration<Artist>
 {
