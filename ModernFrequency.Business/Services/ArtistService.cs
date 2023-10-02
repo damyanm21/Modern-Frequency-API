@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
 using ModernFrequency.Business.Abstraction.Services;
 using ModernFrequency.Business.Models.DTOs.Artist;
+using ModernFrequency.Business.Models.Helpers.ResponseResult;
 using ModernFrequency.Data.Abstraction.Repositories;
 using ModernFrequency.Data.Models.Models;
+using System.Net;
+using static ModernFrequency.Business.Models.Utilities.Constants;
 
 namespace ModernFrequency.Business.Services
 {
@@ -23,30 +26,56 @@ namespace ModernFrequency.Business.Services
             return _mapper.Map<IEnumerable<ArtistGetDTO>>(artists);
         }
 
-        public async Task<ArtistGetDTO> GetArtistByIdAsync(int id)
+        public async Task<ResponseModel> GetArtistByIdAsync(int id)
         {
             var artist = await _artistRepository.GetByIdAsync(id);
-            return _mapper.Map<ArtistGetDTO>(artist);
+            var artistDTO = _mapper.Map<ArtistGetDTO>(artist);
+
+            if (id == null)
+            {
+                return HttpResponseHelper.Error(HttpStatusCode.NotFound, IdNotFound);
+            }
+
+            return HttpResponseHelper.Success(HttpStatusCode.OK, artistDTO);
         }
 
-        public async Task CreateArtistAsync(ArtistPostDTO artistDto)
+        public async Task<ResponseModel> CreateArtistAsync(ArtistPostDTO artistDto)
         {
             var artist = _mapper.Map<Artist>(artistDto);
             await _artistRepository.AddAsync(artist);
             await _artistRepository.SaveChangesAsync(); 
+
+            return HttpResponseHelper.Success(HttpStatusCode.OK);
         }
 
-        public async Task UpdateArtistAsync(ArtistUpdateDTO artist)
+        public async Task<ResponseModel> UpdateArtistAsync(ArtistUpdateDTO artist)
         {
-            var artistEntity = _mapper.Map<Artist>(artist);
-            _artistRepository.Update(artistEntity);
+            var artistDTO = await _artistRepository.GetByIdAsync(artist.ArtistId);
+            
+            if (artistDTO == null) 
+            {
+                return HttpResponseHelper.Error(HttpStatusCode.NotFound, IdNotFound);
+            }
+
+            _artistRepository.Update(artistDTO);
             await _artistRepository.SaveChangesAsync();
+
+            return HttpResponseHelper.Success(HttpStatusCode.OK, artist);
         }
 
-        public async Task DeleteArtistAsync(int id)
+        public async Task<ResponseModel> DeleteArtistAsync(int id)
         {
-            await _artistRepository.DeleteAsync(id);
+            var artist = await _artistRepository.GetByIdAsync(id);
+
+            if (artist == null)
+            {
+                return HttpResponseHelper.Error(HttpStatusCode.NotFound, IdNotFound);
+            }
+
+            _artistRepository.Delete(artist);
             await _artistRepository.SaveChangesAsync();
+
+            return HttpResponseHelper.Success(HttpStatusCode.OK);
         }
     }
 }

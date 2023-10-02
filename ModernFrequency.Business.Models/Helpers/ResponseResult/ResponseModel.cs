@@ -12,7 +12,7 @@ namespace ModernFrequency.Business.Models.Helpers.ResponseResult
     /// </summary>
     public class ResponseModel
     {
-        public static string DefaultErrorMessage = "Somthing went wrong!";
+        public static string DefaultErrorMessage = "Something went wrong!";
         public bool Success { get; set; }
         public int HttpStatusCode { get; set; }
         public object? ErrorMessage { get; set; }

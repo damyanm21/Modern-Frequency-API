@@ -1,4 +1,5 @@
 ﻿using ModernFrequency.Business.Models.DTOs.Artist;
+using ModernFrequency.Business.Models.Helpers.ResponseResult;
 
 namespace ModernFrequency.Business.Abstraction.Services
 {
@@ -17,25 +18,24 @@ namespace ModernFrequency.Business.Abstraction.Services
         /// Gets an artist by their ID asynchronously.
         /// </summary>
         /// <param name="id">The unique ID of the artist.</param>
-        /// <returns>The artist DTO if found; otherwise, null.</returns>
-        Task<ArtistGetDTO> GetArtistByIdAsync(int id);
+        Task<ResponseModel> GetArtistByIdAsync(int id);
 
         /// <summary>
         /// Creates a new artist asynchronously.
         /// </summary>
         /// <param name="artist">The artist DTO to create.</param>
-        Task CreateArtistAsync(ArtistPostDTO artist);
+        Task<ResponseModel> CreateArtistAsync(ArtistPostDTO artist);
 
         /// <summary>
         /// Updates an existing artist asynchronously.
         /// </summary>
         /// <param name="artist">The artist DTO to update.</param>
-        Task UpdateArtistAsync(ArtistUpdateDTO artist);
+        Task<ResponseModel> UpdateArtistAsync(ArtistUpdateDTO artist);
 
         /// <summary>
         /// Deletes an artist by their ID asynchronously.
         /// </summary>
         /// <param name="id">The unique ID of the artist to delete.</param>
-        Task DeleteArtistAsync(int id);
+        Task<ResponseModel> DeleteArtistAsync(int id);
     }
 }
