@@ -45,7 +45,7 @@ namespace ModernFrequency.Business.Services
             await _artistRepository.AddAsync(artist);
             await _artistRepository.SaveChangesAsync(); 
 
-            return HttpResponseHelper.Success(HttpStatusCode.OK);
+            return HttpResponseHelper.Success(HttpStatusCode.OK, artistDto);
         }
 
         public async Task<ResponseModel> UpdateArtistAsync(ArtistUpdateDTO artist)
