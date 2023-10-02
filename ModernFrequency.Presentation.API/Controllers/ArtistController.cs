@@ -48,21 +48,19 @@ namespace ModernFrequency.Presentation.API.Controllers
 
 
         [HttpPut("{id}")]
-        public async Task<ResponseModel> UpdateArtist(ArtistUpdateDTO artist)
+        public async Task<ActionResult<ResponseModel>> UpdateArtist(ArtistUpdateDTO artist)
         {
-            await _artistService.UpdateArtistAsync(artist);
-            var result = HttpResponseHelper.Success(HttpStatusCode.OK, artist);
+            var result = await _artistService.UpdateArtistAsync(artist);
 
-            return result;
+            return StatusCode(result.HttpStatusCode, result);
         }
 
         [HttpDelete("{id}")]
-        public async Task<ResponseModel> DeleteArtist(int id)
+        public async Task<ActionResult<ResponseModel>> DeleteArtist(int id)
         {
-            await _artistService.DeleteArtistAsync(id);
-            var result = HttpResponseHelper.Success(HttpStatusCode.OK);
+            var result = await _artistService.DeleteArtistAsync(id);
 
-            return result;
+            return StatusCode(result.HttpStatusCode, result);
         }
     }
 }
