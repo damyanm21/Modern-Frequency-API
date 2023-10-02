@@ -1,9 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using ModernFrequency.Business.Abstraction.Services;
 using ModernFrequency.Business.Models.DTOs.Artist;
 using ModernFrequency.Business.Models.Helpers.ResponseResult;
-using ModernFrequency.Data.Models.Models;
 using System.Net;
 
 namespace ModernFrequency.Presentation.API.Controllers
@@ -39,8 +37,7 @@ namespace ModernFrequency.Presentation.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateArtist([FromBody] ArtistPostDTO artist)
         {
-            await _artistService.CreateArtistAsync(artist);
-            var result = HttpResponseHelper.Success(HttpStatusCode.Created, artist);
+            var result = await _artistService.CreateArtistAsync(artist);
 
             return StatusCode(result.HttpStatusCode, result);
         }
