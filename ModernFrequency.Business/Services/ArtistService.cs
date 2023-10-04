@@ -12,18 +12,34 @@ namespace ModernFrequency.Business.Services
     public class ArtistService : IArtistService
     {
         private readonly IArtistRepository _artistRepository;
+        private readonly IAlbumRepository _albumRepository;
         private readonly IMapper _mapper;
 
-        public ArtistService(IArtistRepository artistRepository, IMapper mapper)
+        public ArtistService(IArtistRepository artistRepository, IMapper mapper, IAlbumRepository albumRepository)
         {
             _artistRepository = artistRepository;
             _mapper = mapper;
+            _albumRepository = albumRepository;
         }
 
         public async Task<ICollection<ArtistGetDTO>> GetAllArtistsAsync()
         {
             var artists = await _artistRepository.All();
-            return _mapper.Map<ICollection<ArtistGetDTO>>(artists);
+            var artistsWithAlbums = new List<Artist>();
+
+            foreach (var artist in artists)
+            {
+                var albums = await _albumRepository.GetAlbumsByArtistId(artist.ArtistId);
+                artist.Albums = albums.Select(album => new AlbumArtist
+                {
+                    Album = album,
+                    Artist = artist
+                }).ToList();
+
+                artistsWithAlbums.Add(artist);
+            }
+
+            return _mapper.Map<ICollection<ArtistGetDTO>>(artistsWithAlbums);
         }
 
         public async Task<ResponseModel> GetArtistByIdAsync(int id)

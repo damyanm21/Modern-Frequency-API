@@ -13,12 +13,13 @@ namespace ModernFrequency.Business.AutoMapper
         {
             CreateMap<Artist, ArtistGetDTO>()
             .ForMember(dest => dest.Albums, opt => opt.MapFrom(src => src.Albums.Select(a => a.Album)));
-
             CreateMap<Artist, ArtistPostDTO>().ReverseMap();
             CreateMap<Artist, ArtistUpdateDTO>().ReverseMap();
             CreateMap<Album, AlbumGetDTO>().ReverseMap();
             CreateMap<Album, AlbumPostDTO>().ReverseMap();
             CreateMap<Album, AlbumUpdateDTO>().ReverseMap();
+            CreateMap<Album, AlbumIncludeDTO>();
+
             CreateMap<AlbumArtist, AlbumArtistDTO>().ReverseMap();
             CreateMap<Track, TrackDTO>().ReverseMap();
         }

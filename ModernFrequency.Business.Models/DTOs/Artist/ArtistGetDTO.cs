@@ -9,6 +9,6 @@ namespace ModernFrequency.Business.Models.DTOs.Artist
         public int ArtistId { get; set; }
         public string Name { get; set; }
         public Genre? Genre { get; set; }
-        public ICollection<AlbumPostDTO> Albums { get; set; }
+        public ICollection<AlbumIncludeDTO> Albums { get; set; }
     }
 }
