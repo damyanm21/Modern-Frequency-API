@@ -20,10 +20,10 @@ namespace ModernFrequency.Business.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<ArtistGetDTO>> GetAllArtistsAsync()
+        public async Task<ICollection<ArtistGetDTO>> GetAllArtistsAsync()
         {
             var artists = await _artistRepository.All();
-            return _mapper.Map<IEnumerable<ArtistGetDTO>>(artists);
+            return _mapper.Map<ICollection<ArtistGetDTO>>(artists);
         }
 
         public async Task<ResponseModel> GetArtistByIdAsync(int id)
