@@ -1,8 +1,6 @@
-﻿using ModernFrequency.Business.Models.DTOs.Album;
-
-namespace ModernFrequency.Business.Models.DTOs.Track
+﻿namespace ModernFrequency.Business.Models.DTOs.Track
 {
-    public class TrackDTO
+    public class TrackUpdateDTO
     {
         public int TrackId { get; set; }
 
@@ -12,8 +10,5 @@ namespace ModernFrequency.Business.Models.DTOs.Track
 
         // Foreign key for the Album
         public int AlbumId { get; set; }
-
-        // Navigation property for the Album
-        public AlbumGetDTO Album { get; set; }
     }
 }

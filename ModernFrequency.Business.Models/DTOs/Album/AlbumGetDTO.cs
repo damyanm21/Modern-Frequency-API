@@ -11,6 +11,6 @@ namespace ModernFrequency.Business.Models.DTOs.Album
         // Foreign key for the Artist
         public int ArtistId { get; set; }
         // Navigation property for Tracks
-        public ICollection<TrackDTO> Tracks { get; set; }
+        public ICollection<TrackGetDTO> Tracks { get; set; }
     }
 }
