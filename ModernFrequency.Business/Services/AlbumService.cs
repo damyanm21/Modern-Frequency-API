@@ -50,7 +50,7 @@ namespace ModernFrequency.Business.Services
 
         public async Task<ResponseModel> UpdateAlbumAsync(AlbumUpdateDTO album)
         {
-            var albumDTO = await _albumRepository.GetByIdAsync(album.ArtistId);
+            var albumDTO = await _albumRepository.GetByIdAsync(album.AlbumId);
 
             if (albumDTO == null)
             {

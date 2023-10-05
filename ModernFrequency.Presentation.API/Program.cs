@@ -21,6 +21,7 @@ builder.Services.AddScoped<IAlbumRepository, AlbumRepository>();
 builder.Services.AddScoped<ITrackRepository, TrackRepository>();
 builder.Services.AddScoped<IArtistService, ArtistService>();
 builder.Services.AddScoped<IAlbumService, AlbumService>();
+builder.Services.AddScoped<ITrackService, TrackService>();
 builder.Services.AddAutoMapper(typeof(ModernFrequencyMappingProifle));
 
 builder.Services.AddControllers()
