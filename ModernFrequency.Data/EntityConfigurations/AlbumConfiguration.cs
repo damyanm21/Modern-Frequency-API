@@ -7,6 +7,8 @@ public class AlbumConfiguration : IEntityTypeConfiguration<Album>
     public void Configure(EntityTypeBuilder<Album> builder)
     {
         builder.HasKey(album => album.AlbumId);
+        builder.Property(album => album.AlbumId)
+           .ValueGeneratedOnAdd();
 
         builder.Property(album => album.Title)
             .IsRequired()

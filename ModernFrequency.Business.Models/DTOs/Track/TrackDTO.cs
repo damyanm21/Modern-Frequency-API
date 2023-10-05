@@ -14,6 +14,6 @@ namespace ModernFrequency.Business.Models.DTOs.Track
         public int AlbumId { get; set; }
 
         // Navigation property for the Album
-        public AlbumDTO Album { get; set; }
+        public AlbumGetDTO Album { get; set; }
     }
 }

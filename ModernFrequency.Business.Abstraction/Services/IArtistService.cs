@@ -12,7 +12,7 @@ namespace ModernFrequency.Business.Abstraction.Services
         /// Gets all artists asynchronously.
         /// </summary>
         /// <returns>An enumerable collection of artist DTOs.</returns>
-        Task<IEnumerable<ArtistGetDTO>> GetAllArtistsAsync();
+        Task<ICollection<ArtistGetDTO>> GetAllArtistsAsync();
 
         /// <summary>
         /// Gets an artist by their ID asynchronously.

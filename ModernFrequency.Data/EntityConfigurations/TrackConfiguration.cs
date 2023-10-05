@@ -7,6 +7,8 @@ public class TrackConfiguration : IEntityTypeConfiguration<Track>
     public void Configure(EntityTypeBuilder<Track> builder)
     {
         builder.HasKey(track => track.TrackId);
+        builder.Property(track => track.TrackId)
+           .ValueGeneratedOnAdd();
 
         builder.Property(track => track.Title)
             .IsRequired()
