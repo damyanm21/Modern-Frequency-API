@@ -25,6 +25,7 @@ namespace ModernFrequency.Business.AutoMapper
             CreateMap<Track, TrackGetDTO>().ReverseMap();
             CreateMap<Track, TrackPostDTO>().ReverseMap();
             CreateMap<Track, TrackUpdateDTO>().ReverseMap();
+            CreateMap<Track, TrackIncludeDTO>().ReverseMap();
         }
     }
 }

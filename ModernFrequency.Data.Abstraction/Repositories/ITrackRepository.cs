@@ -8,5 +8,6 @@ namespace ModernFrequency.Data.Abstraction.Repositories
     /// </summary>
     public interface ITrackRepository : IRepository<Track>
     {
+        Task<IEnumerable<Track>> GetTracksByAlbumId(int albumId);
     }
 }
